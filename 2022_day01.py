@@ -12,13 +12,13 @@ with open('calories.csv') as csvfile:
 
     for row in readings:
         if len(row) == 0:       #empty row
+            array.append(elf)   #append current elf value to array
             if elf > max:       #is current elf calories > max calories?
                 max = elf       #if so this elf is the new max
             elf = 0             #reset count for next elf
         else:
             current_calories = int(row[0])  #get value from row.  Cast to int
             elf += current_calories         #add to current elf
-            array.append(elf)               #append current elf value to array
 
     ##### Part 1:
 
