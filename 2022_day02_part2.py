@@ -66,8 +66,6 @@ def calc_my_score(game_result, opponent):
     elif my_shape == 'scissors':
         points += 3
 
-    print(opponent, game_result, my_shape, points)
-
     return points
 
 #save values into calories.csv and read by row ...
