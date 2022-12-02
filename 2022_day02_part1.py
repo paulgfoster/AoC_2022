@@ -56,8 +56,6 @@ def get_result(oppenent, myplay):
 with open('strategy_day02.csv') as csvfile:
     readings = csv.reader(csvfile)
 
-    print(readings)
-
     #initialise variables
     opponent = ' '
     myplay = ' '
