@@ -47,6 +47,7 @@ with open('2022_day07_input.txt') as infile:
         
         else:
             #if file it has a size.  Add this to current dir value in vars
+            #last entry is stack is current directory
             if list[0] != 'dir':
                 if list[0].isdigit:
                     this_size = int(list[0])
@@ -54,6 +55,7 @@ with open('2022_day07_input.txt') as infile:
 
                     for key, value in dirs.items():
 
+                        #update all directories in path (it states that indirect files should be included in total)
                         if key in pos:
                             
                             cwd = stack[-1]
@@ -67,8 +69,8 @@ for key, value in dirs.items():
     if value < 100000:
         total += value
 
-print(dirs)
-print(total)
+print(dirs)     #print array of all directories (not needed, just to see extent)
+print(total)    #showtime!
 
 #
 #part 2 .....
@@ -91,12 +93,14 @@ print("we need:", needed)
 current_lowest = required
 directory = ''
 
+#cycle through array and find lowest value > min needed
 for key, value in dirs.items():
     if value >= needed:
         if value < current_lowest:
             current_lowest = value 
             directory = key 
 
+#showtime ...
 print("directory:", directory, "size:", current_lowest)
 
 
