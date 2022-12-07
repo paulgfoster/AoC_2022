@@ -1,22 +1,21 @@
 with open('2022_day07_input.txt') as infile:
     lines = infile.readlines()
 
+    #dirs: dictionary of all directories and current size
     dirs = {}
     dirs['/'] = 0
 
     cwd = str('')
-    count = 0
     parm = ''
     cmd  = ''
 
-    #track where we are ...
+    #stack is where we are as we move through the directory structure ...
     stack = []
 
     # iterate through each line ...
     for line in lines:
         list = line.split()
 
-        count += 1
         # command
         if list[0] == "$":
 
@@ -24,15 +23,21 @@ with open('2022_day07_input.txt') as infile:
                 cmd  = list[1]
                 parm = list[2]
             
-                #if cd get where we're going to and maintain current position in dirstack
+                #if commans is "cd" get where we're going to and maintain current position in stack
                 if cmd == 'cd':
+
+                    #root
                     if parm == '/':
                         cwd = '/'
                         stack = []
                         stack.append('/')
+
+                    #go back one level
                     elif parm == '..':
                         del stack[-1]
                         cwd = stack[-1]
+
+                    #parm is directory.  If not in dictionary then add it
                     else:
                         if cwd == '/':
                             cwd += parm 
